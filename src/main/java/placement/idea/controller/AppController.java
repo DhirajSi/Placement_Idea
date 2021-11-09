@@ -22,6 +22,8 @@ public class AppController {
 	@Autowired
 	UserService userService;
 
+	//This is for post mapping
+	
 	@PostMapping("/addUser")
 	public String saveUser(@RequestBody SignUpUsers user) {
 		Optional<SignUpUsers> response=	getUser(user.getEmailId());
