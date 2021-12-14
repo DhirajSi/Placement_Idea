@@ -22,24 +22,18 @@ public class AppController {
 	@Autowired
 	UserService userService;
 
-	//This is for post mapping
-	
 	@PostMapping("/addUser")
 	public String saveUser(@RequestBody SignUpUsers user) {
-		Optional<SignUpUsers> response=	getUser(user.getEmailId());
-		if(response.isEmpty()) {
+		Optional<SignUpUsers> response = getUser(user.getEmailId());
+		if (response.isEmpty()) {
 			return userService.addNewUser(user);
 		}
-		
-		
 		return Constants.UserEmailIdAlreadyExist;
 	}
-	
-	
+
 	@GetMapping("/getUser/{emailId}")
-	public Optional<SignUpUsers> getUser(@PathVariable String emailId){
+	public Optional<SignUpUsers> getUser(@PathVariable String emailId) {
 		return userService.getUser(emailId);
-		
 	}
 
 }
